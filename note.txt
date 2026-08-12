@@ -1,0 +1,47 @@
+React
+----------------------
+
+    -React is a js library thats helps developers build fast and interactive user interface re-usable component.
+        >component: reusable code piece of user interface
+    -React appp is a collection of different libraries 
+    -components are arranged in atree like structure
+    -there will be a root component in react app which commonly known as 'App'
+    -react used to create single page web application
+        -single page web application: loads only one HTML page initialy,and then updates the content dynamically 
+    -Virtual DOM: vortual (memory) representation of real DOM that react uses to update only the changed parts of UI instead of reloading the entire page.
+     -stops
+        -initial Render
+            reacts ceates a virtual DOM of the real DOM
+        -state changes
+            when data changes react creates new virtual DOM
+        -comparison(Diffing)
+            compare old and new virtualdom to identify changes 
+        -react update only changes element in thr real dom;
+
+    -diffing is the process of comparing two virtual DOM tree to find what has changed 
+    -reaconciliation is the process of updating the real DOM by comparing the new virtual DOM with previous one.
+    -jsx(javascript XML): it is a syntax extension for javascript that allows developers to write HTML-;ike structure inside js in react:
+        -without jsx:
+            -React.createElement("h1",(className:"fw-bold"),"heading")
+        -with jsx
+            -const h1=<h1>Heading</h1>
+    -rules for using jsx
+        -every jsx element must be inside a single parent
+        -parent tag can be any container tag or react fragment(<></>)
+        react fragment lets you to group multiple element without adding an extra DOM element.Fragments helps you to avoid unnecessary <div> wrappers.
+        -every tag must has a closing tag
+        -instead attribute 'class' is 'className' in jsx
+        -jsx using camel case
+        -to provide js code inside jsx use ,(js expression) 
+    -React app creation
+        -CRA(create react app)
+        -vite: building tool for creating web projetcs
+            -install vite: npm i -g create-vite
+            -npm(node package manager): is a tool used to install and manage js libraries in a project
+            -create react app: npm create vite@latest
+            -to run react project: npm run dev 
+        -react project files and folder structure
+          >vite.config.js: vite configuration
+          >READ.md: documention about your project
+          
+
