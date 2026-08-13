@@ -1,7 +1,12 @@
 import './App.css'
+import Employee from './Components/Employee'
+import Company from './Components/Company'
 
 function App() {
-  
+
+  const empName="Mx Miller"
+  const cmpName="Google"
+
   return (
     // <>
     //   <section id="center">
@@ -112,12 +117,14 @@ function App() {
     //   <section id="spacer"></section>
     // </>
 
-    <>
+    <div className='text-center mt-5'>
     <h1>Demo Project</h1>
-    <h3>React</h3>
-    
-    </>
+    <h3 className='text-warning fw-bold'>React</h3>
+    <Employee dataParent={empName} str="hi" flag={false} />
+    <Company comName={cmpName}/>
+    </div>
   )
 }
 
 export default App
+
