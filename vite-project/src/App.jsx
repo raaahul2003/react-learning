@@ -1,6 +1,9 @@
 import './App.css'
 import Employee from './Components/Employee'
 import Company from './Components/Company'
+import Car from './Components/Car'
+import College from './Components/College'
+import Count from './Components/Count'
 
 function App() {
 
@@ -119,9 +122,12 @@ function App() {
 
     <div className='text-center mt-5'>
     <h1>Demo Project</h1>
+    <Count/>
+    <College/>
     <h3 className='text-warning fw-bold'>React</h3>
     <Employee dataParent={empName} str="hi" flag={false} />
     <Company comName={cmpName}/>
+    <Car/>
     </div>
   )
 }

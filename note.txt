@@ -43,6 +43,39 @@ React
         -react project files and folder structure
           >vite.config.js: vite configuration
           >READ.md: documention about your project
+        -package.json:it contains information about the project and its depedencies. it is a config it stores:
+            -project Name
+            -version
+            -installed libraries
+            -script to run the project etc
+        -package-lock.json:it keeps the exact version of all installed packages so the project
+        -.gitignore: contains files/folders name wich is ignored while ad to git.
+        -index.html: is the main html file of your react app.when a user open a react app, t
+        -node_modules:is a folder that contains all installed libraries(packages) and their
+        -public folder: react project can access data stored in public folder globally
+        -src folder: src is the main folder where your application code is written
+            -assets folder: used to store static files used inside the application
+            -main.jsx - it is the file where the react app starts running and gets connected to the
+        -babel library: Babel is a js compiler that converts modern js code into older js so tha  
     
-          
+    -React Event Binding
+        -function without argument :
+            event={function_name}
+        -function with argument:
+            event={()=>function_name(args..)}
+        -function with argument as an event
+            event={(e)=>function_name(e.target.value)} //to get input field value
+
+    -conditional Rendering using truthy and ternary
+
+    -hooks - predefined function 
+        -useState: used to create state in functional compnents
+            >syntax: const [state,state_updating_Function] #useState(initial value)
+        -useEffect(): used when we want to perform some action after a component renders.
+            >syntax: useEffect(()=>{
+                code to execute
+            },dependency)
+            -no dependency :whenever the component re-renders, the code inside useEffect runs.
+            -[]            :run this effect only the initial render.
+            -[date]        :run the effect when data
 
