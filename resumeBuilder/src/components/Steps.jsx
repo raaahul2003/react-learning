@@ -6,56 +6,32 @@ import StepLabel from '@mui/material/StepLabel';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+import { Link } from 'react-router-dom';
 
-const steps = ['Basic Information', 'Contact Details', 'Education Details', 'Work Experience', 'Skills & Certification', 'Review & Submit'];
+const steps = ['Basic Information', 'Contact Details', 'Education Details', 'Skills & Certification', 'Review & Submit'];
 
 function Steps() {
-    const skillSuggestionArray = ['HTML', 'CSS', 'BOOTSTRAP', 'JAVASCRIPT', 'REACT', 'ANGULAR', 'NODE JS', 'EXPRESS', 'MONGODB', 'NEXT JS', 'GIT']
     const [activeStep, setActiveStep] = React.useState(0);
-    const [skipped, setSkipped] = React.useState(new Set());
+    // const [skipped, setSkipped] = React.useState(new Set());
 
-    const isStepOptional = React.useCallback((step) => {
-        return step === 1;
-    }, []);
-
-    const isStepSkipped = (step) => {
-        return skipped.has(step);
-    };
+    // const isStepSkipped = (step) => {
+    //     return skipped.has(step);
+    // };
 
     const handleNext = () => {
-        let newSkipped = skipped;
-        if (isStepSkipped(activeStep)) {
-            newSkipped = new Set(newSkipped.values());
-            newSkipped.delete(activeStep);
-        }
-
         setActiveStep((prevActiveStep) => prevActiveStep + 1);
-        setSkipped(newSkipped);
     };
 
     const handleBack = () => {
         setActiveStep((prevActiveStep) => prevActiveStep - 1);
     };
 
-    const handleSkip = () => {
-        if (!isStepOptional(activeStep)) {
-            // You probably want to guard against something like this,
-            // it should never occur unless someone's actively trying to break something.
-            throw new Error("You can't skip a step that isn't optional.");
-        }
 
-        setActiveStep((prevActiveStep) => prevActiveStep + 1);
-        setSkipped((prevSkipped) => {
-            const newSkipped = new Set(prevSkipped.values());
-            newSkipped.add(activeStep);
-            return newSkipped;
-        });
-    };
-
-    const handleReset = () => {
-        setActiveStep(0);
-    };
-
+   
     const previousActiveStepRef = React.useRef(activeStep);
     const resetButtonRef = React.useRef(null);
     const nextButtonRef = React.useRef(null);
@@ -72,7 +48,18 @@ function Steps() {
                             <TextField id="standard-name" label="Full Name" variant="standard" className='w-100' />
                         </div>
                         <div>
-                            <TextField id="standard-job" label="Job Title" variant="standard" className='w-100' />
+                            <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }} className='w-100'>
+                                <InputLabel id="demo-simple-select-standard-label">Choose Job Title</InputLabel>
+                                <Select
+                                    labelId="demo-simple-select-standard-label"
+                                    id="demo-simple-select-standard"
+
+                                >
+                                    <MenuItem value="">
+                                        <em>None</em>
+                                    </MenuItem>
+                                </Select>
+                            </FormControl>
                         </div>
                         <div>
                             <TextField id="standard-loc" label="Location" variant="standard" className='w-100' />
@@ -97,9 +84,6 @@ function Steps() {
                         <div>
                             <TextField id="standard-linkedin" label="Linkedin Link" variant="standard" className='w-100' />
                         </div>
-                        <div>
-                            <TextField id="standard-portfolio" label="Portfolio Link" variant="standard" className='w-100' />
-                        </div>
                     </div>
                 </div>
             )
@@ -109,13 +93,10 @@ function Steps() {
                     <h3>Education Details</h3>
                     <div className='mt-3'>
                         <div>
-                            <TextField id="standard-course" label="Course" variant="standard" className='w-100' />
+                            <TextField id="standard-course" label="Bachelor's Degree" variant="standard" className='w-100' />
                         </div>
                         <div>
-                            <TextField id="standard-clg" label="College" variant="standard" className='w-100' />
-                        </div>
-                        <div>
-                            <TextField id="standard-uni" label="University" variant="standard" className='w-100' />
+                            <TextField id="standard-clg" label="College/University" variant="standard" className='w-100' />
                         </div>
                         <div>
                             <TextField id="standard-year" label="Passout Year" variant="standard" className='w-100' />
@@ -126,56 +107,13 @@ function Steps() {
 
             case 3: return (
                 <div className='mt-3'>
-                    <h3>Professional Details</h3>
-                    <div className='mt-3'>
-                        <div>
-                            <TextField id="standard-role" label="Job or Internship" variant="standard" className='w-100' />
-                        </div>
-                        <div>
-                            <TextField id="standard-company" label="Comapny Name" variant="standard" className='w-100' />
-                        </div>
-                        <div>
-                            <TextField id="standard-com-loc" label="Company Location" variant="standard" className='w-100' />
-                        </div>
-                        <div>
-                            <TextField id="standard-duration" label="Duration" variant="standard" className='w-100' />
-                        </div>
-                    </div>
-                </div>
-            )
-            case 4: return (
-                <div className='mt-3'>
                     <h3>Skills</h3>
-                    <div className='mt-3 d-flex align-items-center'>
-                        <TextField sx={{ width: '500px' }} id="outlined-skils" label="Add Skills" variant="outlined" />
-                        <Button variant="contained" className='ms-3'>Add</Button>
-                    </div>
-                    <h5>Suggestions:</h5>
-                    <div className='d-flex my-3 flex-wrap'>
-                        {
-                            skillSuggestionArray.map(userSkills => (
-                                <button className='btn btn-dark m-1'>{userSkills}</button>
-                            ))
-                        }
-                    </div>
-                    <h5>Added Skills:</h5>
-                    <div className='d-flex my-3 flex-wrap'>
-                        <span className='btn btn-dark m-1  d-flex align-items-center'>Skill <button className='btn text-light'>x</button></span>
-                    </div>
+                    <p>Our Ai will generate skills & Summary according to your job role.lick the <b>AI SKILL & SUMMARY</b> button to proceed</p>
+                    
                 </div>
             )
+            default : null
 
-
-            case 5: return (
-                <div className='mt-3'>
-                    <h3>Professional Summary</h3>
-                    <div className='mt-3'>
-                        <div>
-                            <TextField id="standard-summary" label="Write a short summary of yourself" variant="standard" className='w-100' multiline rows={4} defaultValue={'Versatile and results-driven Full Stack Web Developer with 5+ years of experience designing, developing, and deploying scalable web applications. Proficient in both front-end and back-end technologies, including React, Angular, Node.j5, Express, and MongoDB. Adept at creating responsive user interfaces, RESTful APIs, and integrating third-party services. Strong understanding of software development life cycle, agile methodologies, and version control (Git).Passionate about building high-performance, user-centric solutions that solve real-world problems.'} />
-                        </div>
-                    </div>
-                </div>
-            )
         }
     }
 
@@ -185,14 +123,7 @@ function Steps() {
                 {steps.map((label, index) => {
                     const stepProps = {};
                     const labelProps = {};
-                    if (isStepOptional(index)) {
-                        labelProps.optional = (
-                            <Typography variant="caption">Optional</Typography>
-                        );
-                    }
-                    if (isStepSkipped(index)) {
-                        stepProps.completed = false;
-                    }
+
                     return (
                         <Step key={label} {...stepProps}>
                             <StepLabel {...labelProps}>{label}</StepLabel>
@@ -207,9 +138,9 @@ function Steps() {
                     </Typography>
                     <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
                         <Box sx={{ flex: '1 1 auto' }} />
-                        <Button onClick={handleReset} ref={resetButtonRef}>
-                            Reset
-                        </Button>
+                        <Link to={'/viewresume'} >
+                            Finish
+                        </Link>
                     </Box>
                 </React.Fragment>
             ) : (
@@ -230,14 +161,14 @@ function Steps() {
                             Back
                         </Button>
                         <Box sx={{ flex: '1 1 auto' }} />
-                        {isStepOptional(activeStep) && (
-                            <Button color="inherit" onClick={handleSkip} sx={{ mr: 1 }}>
-                                Skip
-                            </Button>
-                        )}
-                        <Button onClick={handleNext} ref={nextButtonRef}>
-                            {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
-                        </Button>
+                        {
+                            activeStep==steps.length-2?
+                            <Button onClick={handleNext}>Generate Skill & summary</Button>
+                            :
+                            <Button onClick={handleNext}>Next</Button>
+                        }
+                        
+
                     </Box>
                 </React.Fragment>
             )}

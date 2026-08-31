@@ -13,21 +13,6 @@ import Edit from './Edit';
 function Preview() {
     return (
         <div>
-            <Stack direction={'row'} sx={{ justifyContent: 'center', alignItems: 'center' }}>
-                {/* download */}
-                <button className='btn fs-1 text-danger'><IoIosDownload /> </button>
-                {/* edit */}
-                <Edit />
-
-                {/* history */}
-                <Link to={'/history'} className='fs-2 text-sucess ms-2'><FaHistory /> </Link>
-
-                {/* back */}
-                <Link to={'/form'} className='fs-1 text-primary ms-3'><TbPlayerTrackPrevFilled /> </Link>
-
-
-
-            </Stack>
             <Box component="section" >
                 <Paper elevation={3} sx={{ p: 2, textAlign: 'center' }}>
                     <h2>Name</h2>
@@ -52,7 +37,7 @@ function Preview() {
 
                     <Divider sx={{ fontSize: '23px', fontWeight: 'Bold' }}>Skills</Divider>
                     <Stack direction="row" spacing={2} sx={{ flexWrap: 'wrap', gap: '8px' }}>
-                        <Button variant="contained">Contained</Button>
+                        <Button variant="contained">Skill</Button>
 
                     </Stack>
 

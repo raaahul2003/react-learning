@@ -26,7 +26,7 @@ function ResumeGenerator() {
       </div>
       <div className='text-center mb-5'>
           {/* <a href="/form" className='btn btn-dark'>Let's Start</a> */}
-          <Link to={'/form'} className='btn btn-dark'>Let's Start</Link>
+          <Link to={'/form'} className='btn btn-primary text-light'>Let's Start</Link>
       </div>
     </div>
   )
