@@ -1,9 +1,19 @@
 import React from 'react'
+import Steps from '../components/Steps'
+import Preview from '../components/Preview'
 
 function UserForm() {
   return (
-    <div>
-       <h1>User Form</h1>
+    <div className='container-fluid mt-5'>
+       <div className='row p-5'>
+        <div className="col-lg-6">
+          <Steps/>
+        </div>
+        <div className='col-1'></div>
+        <div className="col-lg-5">
+          <Preview/>
+        </div>
+       </div>
     </div>
   )
 }
