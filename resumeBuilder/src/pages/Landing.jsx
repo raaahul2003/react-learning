@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 function Landing() {
   return (
     <div >
-      <section style={{height: '80vh',backgroundImage: "url('/bgimage.jpg')",backgroundSize: 'contain',backgroundPosition: 'center',backgroundAttachment:'fixed'}} className='d-flex align-items-center justify-content-center flex-column'>
+      <section style={{height: '80vh',backgroundImage: "url('/bgimage2.jpg')",backgroundSize: 'cover',backgroundPosition: 'center',backgroundAttachment:'fixed'}} className='d-flex align-items-center justify-content-center flex-column'>
       <div className='text-center box-shadow rounded p-5' style={{backgroundColor: 'rgb(255,255,255,0.3)'}}>
             <h2 style={{fontFamily: 'Pacifico'}}>Designed to get hired</h2>
             <h4>Your skills, your story, your next job - all in one</h4>
@@ -38,7 +38,7 @@ function Landing() {
           </div>
       </section> 
      
-      <section style={{height: '80vh',backgroundImage: "url('/bgimage2.jpg')",backgroundSize: 'cover',backgroundPosition: 'center',backgroundAttachment:'fixed'}}>
+      <section style={{height: '80vh',backgroundImage: "url('/bgimage.jpg')",backgroundSize: 'cover',backgroundPosition: 'center',backgroundAttachment:'fixed'}}>
       </section>
 
       <section className='m-5'>

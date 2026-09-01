@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Box from '@mui/material/Box';
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
@@ -10,18 +10,17 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import { Link } from 'react-router-dom';
+import jobTypes from '../assets/jobRole.json'
+import jobSkills from '../assets/jobSkills.json'
+import jobSummary from '../assets/summaries.json'
 
-const steps = ['Basic Information', 'Contact Details', 'Education Details', 'Skills & Certification', 'Review & Submit'];
 
-function Steps() {
+const steps = ['Basic Information', 'Contact Details', 'Education Details', 'Review & Submit'];
+
+function Steps({resumeData,setresumeData}) {
     const [activeStep, setActiveStep] = React.useState(0);
-    // const [skipped, setSkipped] = React.useState(new Set());
-
-    // const isStepSkipped = (step) => {
-    //     return skipped.has(step);
-    // };
-
+    
+    
     const handleNext = () => {
         setActiveStep((prevActiveStep) => prevActiveStep + 1);
     };
@@ -29,6 +28,16 @@ function Steps() {
     const handleBack = () => {
         setActiveStep((prevActiveStep) => prevActiveStep - 1);
     };
+
+    const generateAI=()=> {
+        setresumeData({
+            ...resumeData,
+            skills:jobSkills[resumeData.job],
+            summary:jobSummary[resumeData.job]
+
+        })
+        handleNext()
+    }
 
 
    
@@ -45,24 +54,26 @@ function Steps() {
                     <h3>Personal Details</h3>
                     <div className='mt-3'>
                         <div>
-                            <TextField id="standard-name" label="Full Name" variant="standard" className='w-100' />
+                            <TextField value={resumeData.fullName} onChange={(e)=>setresumeData({...resumeData,fullName:e.target.value})} id="standard-name" label="Full Name" variant="standard" className='w-100' />
                         </div>
                         <div>
                             <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }} className='w-100'>
                                 <InputLabel id="demo-simple-select-standard-label">Choose Job Title</InputLabel>
-                                <Select
+                                <Select value={resumeData.job} onChange={(e)=>setresumeData({...resumeData,job:e.target.value})}
                                     labelId="demo-simple-select-standard-label"
                                     id="demo-simple-select-standard"
 
                                 >
-                                    <MenuItem value="">
-                                        <em>None</em>
-                                    </MenuItem>
+                                   {
+                                    jobTypes.jobRoles.map(role=>(
+                                        <MenuItem key={role} value={role}>{role}</MenuItem>
+                                    ))
+                                   }
                                 </Select>
                             </FormControl>
                         </div>
                         <div>
-                            <TextField id="standard-loc" label="Location" variant="standard" className='w-100' />
+                            <TextField value={resumeData.location} onChange={(e)=>setresumeData({...resumeData,location:e.target.value})} id="standard-loc" label="Location" variant="standard" className='w-100' />
                         </div>
                     </div>
                 </div>
@@ -73,16 +84,16 @@ function Steps() {
                     <h3>Contact Details</h3>
                     <div className='mt-3'>
                         <div>
-                            <TextField id="standard-email" label="Email" variant="standard" className='w-100' />
+                            <TextField value={resumeData.email} onChange={(e)=>setresumeData({...resumeData,email:e.target.value})} id="standard-email" label="Email" variant="standard" className='w-100' />
                         </div>
                         <div>
-                            <TextField id="standard-phone" label="Phone" variant="standard" className='w-100' />
+                            <TextField value={resumeData.phone} onChange={(e)=>setresumeData({...resumeData,phone:e.target.value})} id="standard-phone" label="Phone" variant="standard" className='w-100' />
                         </div>
                         <div>
-                            <TextField id="standard-github" label="Github Link" variant="standard" className='w-100' />
+                            <TextField value={resumeData.github} onChange={(e)=>setresumeData({...resumeData,github:e.target.value})} id="standard-github" label="Github Link" variant="standard" className='w-100' />
                         </div>
                         <div>
-                            <TextField id="standard-linkedin" label="Linkedin Link" variant="standard" className='w-100' />
+                            <TextField value={resumeData.linkedin} onChange={(e)=>setresumeData({...resumeData,linkedin:e.target.value})} id="standard-linkedin" label="Linkedin Link" variant="standard" className='w-100' />
                         </div>
                     </div>
                 </div>
@@ -93,13 +104,13 @@ function Steps() {
                     <h3>Education Details</h3>
                     <div className='mt-3'>
                         <div>
-                            <TextField id="standard-course" label="Bachelor's Degree" variant="standard" className='w-100' />
+                            <TextField value={resumeData.degree} onChange={(e)=>setresumeData({...resumeData,degree:e.target.value})} id="standard-course" label="Bachelor's Degree" variant="standard" className='w-100' />
                         </div>
                         <div>
-                            <TextField id="standard-clg" label="College/University" variant="standard" className='w-100' />
+                            <TextField value={resumeData.university} onChange={(e)=>setresumeData({...resumeData,university:e.target.value})} id="standard-clg" label="College/University" variant="standard" className='w-100' />
                         </div>
                         <div>
-                            <TextField id="standard-year" label="Passout Year" variant="standard" className='w-100' />
+                            <TextField value={resumeData.passout} onChange={(e)=>setresumeData({...resumeData,passout:e.target.value})} id="standard-year" label="Passout Year" variant="standard" className='w-100' />
                         </div>
                     </div>
                 </div>
@@ -138,9 +149,9 @@ function Steps() {
                     </Typography>
                     <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
                         <Box sx={{ flex: '1 1 auto' }} />
-                        <Link to={'/viewresume'} >
+                        <Button ref={resetButtonRef} >
                             Finish
-                        </Link>
+                        </Button>
                     </Box>
                 </React.Fragment>
             ) : (
@@ -162,8 +173,8 @@ function Steps() {
                         </Button>
                         <Box sx={{ flex: '1 1 auto' }} />
                         {
-                            activeStep==steps.length-2?
-                            <Button onClick={handleNext}>Generate Skill & summary</Button>
+                            activeStep==steps.length-1?
+                            <Button onClick={generateAI}>Generate Skill & summary</Button>
                             :
                             <Button onClick={handleNext}>Next</Button>
                         }
