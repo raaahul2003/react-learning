@@ -5,20 +5,21 @@ import { Link } from 'react-router-dom';
 import { Divider } from '@mui/material';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
-import { IoIosDownload } from "react-icons/io";
-import { FaHistory } from "react-icons/fa";
-import { TbPlayerTrackPrevFilled } from "react-icons/tb";
-import Edit from './Edit';
+// import { IoIosDownload } from "react-icons/io";
+// import { FaHistory } from "react-icons/fa";
+// import { TbPlayerTrackPrevFilled } from "react-icons/tb";
+// import Edit from './Edit';
 
 
 
 function Preview({resumeData}) {
+    
     console.log(resumeData);
     
     return (
         <div>
             <Box component="section" >
-                <Paper elevation={3} sx={{ p: 2, textAlign: 'center' }}>
+                <Paper elevation={3} sx={{ p: 2, textAlign: 'center'}}>
                     <h2>{resumeData.fullName}</h2>
                     <h6>{resumeData.job}</h6>
 
@@ -37,8 +38,8 @@ function Preview({resumeData}) {
                     <Divider sx={{ fontSize: '23px', fontWeight: 'Bold' }}>Skills</Divider>
                     <Stack direction="row" sx={{ flexWrap: 'wrap', gap: '6px'}}>
                         {
-                                resumeData.skills.map(skill => (
-                                    <Button variant='contained'>{skill}</Button>
+                                resumeData.skills?.map((skill,index) => (
+                                    <Button key={index} variant='contained'>{skill}</Button>
                                 ))
                         }
                     </Stack>

@@ -14,13 +14,15 @@ import jobTypes from '../assets/jobRole.json'
 import jobSkills from '../assets/jobSkills.json'
 import jobSummary from '../assets/summaries.json'
 // import addResumeApi from '../services/callApi'
-import {addResumeApi} from '../services/callApi'
+import { addResumeApi } from '../services/callApi'
+import { useNavigate } from 'react-router-dom';
 
 
 const steps = ['Basic Information', 'Contact Details', 'Education Details', 'Review & Submit'];
 
 function Steps({ resumeData, setresumeData }) {
     const [activeStep, setActiveStep] = React.useState(0);
+    const navigate = useNavigate()
 
 
     const handleNext = () => {
@@ -40,15 +42,25 @@ function Steps({ resumeData, setresumeData }) {
         })
         handleNext()
     }
-    const addResume = async() => {
+
+    const addResume = async () => {
         const { fullName, job, location, email, phone, github, linkedin, degree, university, passout, skills, summary } = resumeData
         if (fullName && job && location && email && phone && github && linkedin && degree && university && passout && skills.length > 0 && summary) {
 
-           const response = await addResumeApi(resumeData)
-           console.log(response);
-           
+            const response = await addResumeApi(resumeData)
+            console.log(response);
+
+            if(response.status==201){
+                alert("Resume Generated Sucessfully");
+                const resumeId=response.data.id
+                // console.log(resumeId);
+                
+                navigate(`/resume/${resumeId}/view`);
+
+            }
+
         }
-        else{
+        else {
             alert("Fill the fields completely")
         }
     }

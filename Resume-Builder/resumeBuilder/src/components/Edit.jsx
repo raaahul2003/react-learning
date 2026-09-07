@@ -4,7 +4,10 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-import { TextField } from '@mui/material';
+import { FormControl, InputLabel, MenuItem, Select, TextField } from '@mui/material';
+import jobTypes from '../assets/jobRole.json'
+import { useRef } from 'react';
+import { editResumeApi } from '../services/callApi';
 
 
 const style = {
@@ -19,13 +22,49 @@ const style = {
     boxShadow: 24,
     p: 4,
     overflowY: 'auto',
-    
+
 };
 
-function Edit() {
+function Edit({ resumeData, setresumeData }) {
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+    const removeSkill = (skill) => {
+        setresumeData({ ...resumeData, skills: resumeData?.skills?.filter(item => item !== skill) })
+    }
+    const skillRef = useRef()
+
+    const addSkill = (skill) => {
+        if (skill) {
+            if (resumeData?.skills.map(item => item.toLowerCase()).includes(skill.toLowerCase())) {
+                alert("Skill is already added!")
+            } else {
+                setresumeData({ ...resumeData, skills: [...resumeData?.skills, skill] })
+            }
+            skillRef.current.value = ""
+        } else {
+            alert("Enter a valid skill!")
+        }
+    }
+     const editResume = async () => {
+            const { fullName, job, location, email, phone, github, linkedin, degree, university, passout, skills, summary } = resumeData
+            if (fullName && job && location && email && phone && github && linkedin && degree && university && passout && skills.length > 0 && summary) {
+    
+                const response = await editResumeApi(resumeData?.id,resumeData)
+                console.log(response);
+    
+                if(response.status==200){
+                    alert("Resume Updated Sucessfully");
+                    handleClose()
+    
+                }
+    
+            }
+            else {
+                alert("Fill the fields completely")
+            }
+        }
+
     return (
         <div>
             <button onClick={handleOpen} className='btn fs-2 text-warning'><FaEdit /> </button>
@@ -44,13 +83,26 @@ function Edit() {
                             <h3>Personal Details</h3>
                             <div className='mt-3'>
                                 <div>
-                                    <TextField id="standard-name" label="Full Name" variant="standard" className='w-100' />
+                                    <TextField value={resumeData.fullName} onChange={(e) => setresumeData({ ...resumeData, fullName: e.target.value })} id="standard-name" label="Full Name" variant="standard" className='w-100' />
                                 </div>
                                 <div>
-                                    <TextField id="standard-job" label="Job Title" variant="standard" className='w-100' />
+                                    <FormControl variant="standard" className='w-100'>
+                                        <InputLabel id="demo-simple-select-standard-label">Choose Job Title</InputLabel>
+                                        <Select value={resumeData?.job} onChange={(e) => setresumeData({ ...resumeData, job: e.target.value })}
+                                            labelId="demo-simple-select-standard-label"
+                                            id="demo-simple-select-standard"
+
+                                        >
+                                            {
+                                                jobTypes.jobRoles.map(role => (
+                                                    <MenuItem key={role} value={role}>{role}</MenuItem>
+                                                ))
+                                            }
+                                        </Select>
+                                    </FormControl>
                                 </div>
                                 <div>
-                                    <TextField id="standard-loc" label="Location" variant="standard" className='w-100' />
+                                    <TextField value={resumeData.location} onChange={(e) => setresumeData({ ...resumeData, location: e.target.value })} id="standard-loc" label="Location" variant="standard" className='w-100' />
                                 </div>
                             </div>
                         </div>
@@ -59,19 +111,16 @@ function Edit() {
                             <h3>Contact Details</h3>
                             <div className='mt-3'>
                                 <div>
-                                    <TextField id="standard-email" label="Email" variant="standard" className='w-100' />
+                                    <TextField value={resumeData.email} onChange={(e) => setresumeData({ ...resumeData, email: e.target.value })} id="standard-email" label="Email" variant="standard" className='w-100' />
                                 </div>
                                 <div>
-                                    <TextField id="standard-phone" label="Phone" variant="standard" className='w-100' />
+                                    <TextField value={resumeData.phone} onChange={(e) => setresumeData({ ...resumeData, phone: e.target.value })} id="standard-phone" label="Phone" variant="standard" className='w-100' />
                                 </div>
                                 <div>
-                                    <TextField id="standard-github" label="Github Link" variant="standard" className='w-100' />
+                                    <TextField value={resumeData.github} onChange={(e) => setresumeData({ ...resumeData, github: e.target.value })} id="standard-github" label="Github Link" variant="standard" className='w-100' />
                                 </div>
                                 <div>
-                                    <TextField id="standard-linkedin" label="Linkedin Link" variant="standard" className='w-100' />
-                                </div>
-                                <div>
-                                    <TextField id="standard-portfolio" label="Portfolio Link" variant="standard" className='w-100' />
+                                    <TextField value={resumeData.linkedin} onChange={(e) => setresumeData({ ...resumeData, linkedin: e.target.value })} id="standard-linkedin" label="Linkedin Link" variant="standard" className='w-100' />
                                 </div>
                             </div>
                         </div>
@@ -80,34 +129,13 @@ function Edit() {
                             <h3>Education Details</h3>
                             <div className='mt-3'>
                                 <div>
-                                    <TextField id="standard-course" label="Course" variant="standard" className='w-100' />
+                                    <TextField value={resumeData.degree} onChange={(e) => setresumeData({ ...resumeData, degree: e.target.value })} id="standard-course" label="Bachelor's Degree" variant="standard" className='w-100' />
                                 </div>
                                 <div>
-                                    <TextField id="standard-clg" label="College" variant="standard" className='w-100' />
+                                    <TextField value={resumeData.university} onChange={(e) => setresumeData({ ...resumeData, university: e.target.value })} id="standard-clg" label="College/University" variant="standard" className='w-100' />
                                 </div>
                                 <div>
-                                    <TextField id="standard-uni" label="University" variant="standard" className='w-100' />
-                                </div>
-                                <div>
-                                    <TextField id="standard-year" label="Passout Year" variant="standard" className='w-100' />
-                                </div>
-                            </div>
-                        </div>
-                        {/*  */}
-                        <div className='mt-3'>
-                            <h3>Professional Details</h3>
-                            <div className='mt-3'>
-                                <div>
-                                    <TextField id="standard-role" label="Job or Internship" variant="standard" className='w-100' />
-                                </div>
-                                <div>
-                                    <TextField id="standard-company" label="Comapny Name" variant="standard" className='w-100' />
-                                </div>
-                                <div>
-                                    <TextField id="standard-com-loc" label="Company Location" variant="standard" className='w-100' />
-                                </div>
-                                <div>
-                                    <TextField id="standard-duration" label="Duration" variant="standard" className='w-100' />
+                                    <TextField value={resumeData.passout} onChange={(e) => setresumeData({ ...resumeData, passout: e.target.value })} id="standard-year" label="Passout Year" variant="standard" className='w-100' />
                                 </div>
                             </div>
                         </div>
@@ -115,12 +143,16 @@ function Edit() {
                         <div className='mt-3'>
                             <h3>Skills</h3>
                             <div className='mt-3 d-flex align-items-center'>
-                                <TextField sx={{ width: '500px' }} id="outlined-skils" label="Add Skills" variant="outlined" />
-                                <Button variant="contained" className='ms-3'>Add</Button>
+                                <input id="outlined-skils" label="Add Skills" variant="outlined" ref={skillRef} />
+                                <Button variant="contained" className='ms-3' onClick={() => addSkill(skillRef.current.value)}>Add</Button>
                             </div>
                             <h5>Added Skills:</h5>
                             <div className='d-flex my-3 flex-wrap'>
-                                <span className='btn btn-dark m-1  d-flex align-items-center'>Skill <button className='btn text-light'>x</button></span>
+                                {
+                                    resumeData?.skills?.map(skill => (
+                                        <span key={skill} className='btn btn-dark m-1  d-flex align-items-center'>{skill} <button className='btn text-light' onClick={() => removeSkill(skill)}>x</button></span>
+                                    ))
+                                }
                             </div>
                         </div>
                         {/*  */}
@@ -128,12 +160,12 @@ function Edit() {
                             <h3>Professional Summary</h3>
                             <div className='mt-3'>
                                 <div>
-                                    <TextField id="standard-summary" label="Write a short summary of yourself" variant="standard" className='w-100' multiline rows={4} />
+                                    <TextField value={resumeData?.summary} id="standard-summary" label="Write a short summary of yourself" variant="standard" className='w-100' multiline rows={4} onChange={(e) => setresumeData({ ...resumeData, summary: e.target.value })} />
                                 </div>
                             </div>
                         </div>
                     </Typography>
-                    <Button>Update</Button>
+                    <Button onClick={editResume} className='btn btn-primary w-100'>Update</Button>
                 </Box>
             </Modal>
         </div>
