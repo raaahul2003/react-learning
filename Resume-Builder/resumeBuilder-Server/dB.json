@@ -776,16 +776,91 @@
         "REST APIs",
         "Git",
         "Deployment",
-        "Github",
-        "Rinsha"
+        "Github"
       ],
       "summary": "Full stack developer with hands-on experience in developing end-to-end web applications using both frontend and backend technologies. Adept at building scalable systems and delivering high-quality solutions.",
       "id": 30
-    }
-  ],
-  "historyResume": [
+    },
     {
-      "fullName": "Rahul Raj C P",
+      "fullName": "Rinsha",
+      "job": "Frontend Developer",
+      "location": "Malappuram",
+      "email": "rinsha@gmail.com",
+      "phone": "79946 99455",
+      "github": "Github",
+      "linkedin": "Linkedin",
+      "degree": "Btech",
+      "university": "MGM College Malappuram",
+      "passout": "2026",
+      "skills": [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "React",
+        "Responsive Design",
+        "Tailwind CSS",
+        "Bootstrap",
+        "DOM Manipulation",
+        "Cross Browser Compatibility",
+        "Git"
+      ],
+      "summary": "Creative frontend developer with expertise in building responsive and user-friendly web interfaces using HTML, CSS, JavaScript, and modern frameworks. Passionate about creating engaging user experiences and optimizing web performance.",
+      "id": 31
+    },
+    {
+      "fullName": "RAHUL RAJ C P",
+      "job": "Full Stack Developer",
+      "location": "Palakkad",
+      "email": "raj319720@gmail.com",
+      "phone": "79946 99455",
+      "github": "Github",
+      "linkedin": "Linkedin",
+      "degree": "Btech",
+      "university": "MGM College Malappuram",
+      "passout": "2026",
+      "skills": [
+        "JavaScript",
+        "React",
+        "Node.js",
+        "Express",
+        "MongoDB",
+        "HTML",
+        "CSS",
+        "REST APIs",
+        "Deployment",
+        "Git"
+      ],
+      "summary": "Full stack developer with hands-on experience in developing end-to-end web applications using both frontend and backend technologies. Adept at building scalable systems and delivering high-quality solutions.",
+      "id": 32
+    },
+    {
+      "fullName": "RAHUL RAJ C P",
+      "job": "Full Stack Developer",
+      "location": "Palakkad",
+      "email": "raj319720@gmail.com",
+      "phone": "79946 99455",
+      "github": "https://github.com/raaahul2003",
+      "linkedin": "Linkedin",
+      "degree": "Btech",
+      "university": "MGM College Malappuram",
+      "passout": "2026",
+      "skills": [
+        "JavaScript",
+        "React",
+        "Node.js",
+        "Express",
+        "MongoDB",
+        "HTML",
+        "CSS",
+        "REST APIs",
+        "Git",
+        "Deployment"
+      ],
+      "summary": "Full stack developer with hands-on experience in developing end-to-end web applications using both frontend and backend technologies. Adept at building scalable systems and delivering high-quality solutions.",
+      "id": 33
+    },
+    {
+      "fullName": "RAHUL RAJ C P",
       "job": "Full Stack Developer",
       "location": "Palakkad",
       "email": "raj319720@gmail.com",
@@ -808,21 +883,82 @@
         "Deployment"
       ],
       "summary": "Full stack developer with hands-on experience in developing end-to-end web applications using both frontend and backend technologies. Adept at building scalable systems and delivering high-quality solutions.",
-      "id": 28
+      "id": 34
     },
     {
-      "timeStamb": "05/09/2026,09:14:25",
-      "resumeId": "28",
-      "imgUrl": "https://res.cloudinary.com/gdlwftga/image/upload/v1788579865/vqpnmzpr90gagtjzp9po.png",
-      "jobRole": "Full Stack Developer",
-      "id": 29
+      "fullName": "Rajitha C P",
+      "job": "UI/UX Designer",
+      "location": "Palakkad",
+      "email": "rajitha@gmail.com",
+      "phone": "9778762103",
+      "github": "Github",
+      "linkedin": "Linkedin",
+      "degree": "BCA",
+      "university": "St Mary's Puthanagadi",
+      "passout": "2027",
+      "skills": [
+        "Figma",
+        "Adobe XD",
+        "Wireframing",
+        "Prototyping",
+        "User Research",
+        "Usability Testing",
+        "Interaction Design",
+        "Design Systems",
+        "Typography",
+        "Color Theory"
+      ],
+      "summary": "UI/UX designer focused on creating intuitive and visually appealing user experiences. Skilled in wireframing, prototyping, and user-centered design to improve product usability.",
+      "id": 35
     },
     {
-      "timeStamb": "7/9/2026,9:12:08 AM",
-      "resumeId": "29",
-      "imgUrl": "https://res.cloudinary.com/gdlwftga/image/upload/v1788752528/peeuovrfie5kb26msudm.png",
+      "fullName": "Niranjana V P",
+      "job": "Software Developer",
+      "location": "Palakkad",
+      "email": "niranjana@gmail.com",
+      "phone": "7593073662",
+      "github": "Github",
+      "linkedin": "Linkedin",
+      "degree": "Btech",
+      "university": "Pathnapuram Engineering College",
+      "passout": "2027",
+      "skills": [
+        "JavaScript",
+        "Python",
+        "Java",
+        "Object-Oriented Programming",
+        "Data Structures",
+        "Algorithms",
+        "Git",
+        "REST APIs",
+        "Debugging",
+        "Software Testing"
+      ],
+      "summary": "Results-driven software developer with strong experience in designing, developing, and maintaining scalable applications. Skilled in programming, debugging, and implementing efficient software solutions using modern development practices.",
+      "id": 36
+    }
+  ],
+  "historyResume": [
+    {
+      "timeStamb": "08/09/2026,10:19:46",
+      "resumeId": "34",
+      "imgUrl": "https://res.cloudinary.com/gdlwftga/image/upload/v1788842986/tvzl4awzkmz87eyvphcs.png",
       "jobRole": "Full Stack Developer",
-      "id": 30
+      "id": 1
+    },
+    {
+      "timeStamb": "08/09/2026,10:21:14",
+      "resumeId": "35",
+      "imgUrl": "https://res.cloudinary.com/gdlwftga/image/upload/v1788843074/j4zrmiwl5949u92cjjco.png",
+      "jobRole": "UI/UX Designer",
+      "id": 2
+    },
+    {
+      "timeStamb": "08/09/2026,10:24:34",
+      "resumeId": "36",
+      "imgUrl": "https://res.cloudinary.com/gdlwftga/image/upload/v1788843274/npr9kntayv24y6n8m28m.png",
+      "jobRole": "Software Developer",
+      "id": 3
     }
   ]
 }
