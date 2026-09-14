@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const axiosInstance = axios.create({
-    baseURL: 'http://localhost:3000',
+    baseURL: 'https://resumebuilder-server-ss8m.onrender.com',
     timeout: 5000
 })
 

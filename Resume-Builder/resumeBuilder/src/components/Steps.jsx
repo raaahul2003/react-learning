@@ -82,7 +82,7 @@ function Steps({ resumeData, setresumeData }) {
                             <TextField value={resumeData.fullName} onChange={(e) => setresumeData({ ...resumeData, fullName: e.target.value })} id="standard-name" label="Full Name" variant="standard" className='w-100' />
                         </div>
                         <div>
-                            <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }} className='w-100'>
+                            <FCormControl variant="standard" sx={{ m: 1, minWidth: 120 }} className='w-100'>
                                 <InputLabel id="demo-simple-select-standard-label">Choose Job Title</InputLabel>
                                 <Select value={resumeData.job} onChange={(e) => setresumeData({ ...resumeData, job: e.target.value })}
                                     labelId="demo-simple-select-standard-label"
@@ -95,7 +95,7 @@ function Steps({ resumeData, setresumeData }) {
                                         ))
                                     }
                                 </Select>
-                            </FormControl>
+                            </FCormControl>
                         </div>
                         <div>
                             <TextField value={resumeData.location} onChange={(e) => setresumeData({ ...resumeData, location: e.target.value })} id="standard-loc" label="Location" variant="standard" className='w-100' />
