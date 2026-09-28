@@ -34,7 +34,7 @@ function App() {
         <Route path='/' element={loading ? <Preloader /> : <Home />} />
 
         <Route path='/login' element={<Auth />} />
-        <Route path='/signup' element={<Auth />} />
+        <Route path='/signup' element={<Auth register/>} />
         <Route path='/all-books' element={<AllBooks />} />
         <Route path='/contact' element={<Contact />} />
         <Route path='/profile' element={<Profile />} />
