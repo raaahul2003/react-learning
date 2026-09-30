@@ -23,7 +23,7 @@ function UserHeader() {
           <FontAwesomeIcon icon={faInstagram} className='text-2xl' />
           <FontAwesomeIcon icon={faTwitter} className='text-2xl' />
           <FontAwesomeIcon icon={faFacebook} className='text-2xl' />
-          <Link className='border border-black rounded py-2 px-3'> <FontAwesomeIcon icon={faUser} /> Login</Link>
+          <Link to={'/login'} className='border border-black rounded py-2 px-3'> <FontAwesomeIcon icon={faUser} /> Login</Link>
         </div>
       </div>
       <nav className='bg-black text-white font-bold p-3 md:flex item-center justify-center '>
@@ -32,7 +32,7 @@ function UserHeader() {
           <button onClick={() => setListStatus(!listStatus)}>
             <FontAwesomeIcon icon={faBars} className='text-2xl' />
           </button>
-          <Link className='border border-white rounded py-2 px-3'> <FontAwesomeIcon icon={faUser} /> Login</Link>
+          <Link to={'/login'} className='border border-white rounded py-2 px-3'> <FontAwesomeIcon icon={faUser} /> Login</Link>
         </div>
 
         <div className={listStatus ? 'flex flex-col gap-5 mt-2 my-2' : 'md:flex hidden'}>
@@ -40,8 +40,6 @@ function UserHeader() {
           <Link to={'/all-books'} className='mx-4'>Books</Link>
           <Link to={'/contact'} className='mx-4'>Contact</Link>
         </div>
-
-
       </nav>
     </>
   )

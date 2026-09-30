@@ -1,7 +1,8 @@
 import { faFacebook, faInstagram, faLinkedinIn, faTwitter } from '@fortawesome/free-brands-svg-icons'
-import { faArrowRightLong } from '@fortawesome/free-solid-svg-icons'
+import { faArrowRightLong, faBackward } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 
 function Footer() {
@@ -29,6 +30,9 @@ function Footer() {
             <FontAwesomeIcon icon={faTwitter} className='text-3xl'/>
             <FontAwesomeIcon icon={faFacebook} className='text-3xl'/>
             <FontAwesomeIcon icon={faLinkedinIn} className='text-3xl'/>
+          </div>
+          <div className='mt-5 '>
+          <Link to={'/'} className='bg-white p-2 rounded font-bold text-gray-900'><FontAwesomeIcon icon={faBackward} /> BOOK STORE</Link>
           </div>
         </div>
       </div>
